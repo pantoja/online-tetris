@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let nextRandom = 0
     let timerId
     let score = 0
+    const isGameOver = false
     const colors = [
       'orange',
       'red',
@@ -15,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
       'green',
       'blue'
     ]
-  
+    
     //The Tetrominoes
     const lTetromino = [
       [1, width+1, width*2+1, 2],
@@ -60,7 +61,10 @@ document.addEventListener('DOMContentLoaded', () => {
     //randomly select a Tetromino and its first rotation
     let random = Math.floor(Math.random()*theTetrominoes.length)
     let current = theTetrominoes[random][currentRotation]
-  
+    
+    
+    
+
     //draw the Tetromino
     function draw() {
       current.forEach(index => {
@@ -80,13 +84,13 @@ document.addEventListener('DOMContentLoaded', () => {
   
     //assign functions to keyCodes
     function control(e) {
-      if(e.keyCode === 37) {
+      if(e.keyCode === 37 && timerId) {
         moveLeft()
-      } else if (e.keyCode === 38) {
+      } else if (e.keyCode === 38 && timerId) {
         rotate()
-      } else if (e.keyCode === 39) {
+      } else if (e.keyCode === 39 && timerId) {
         moveRight()
-      } else if (e.keyCode === 40) {
+      } else if (e.keyCode === 40 && timerId) {
         moveDown()
       }
     }
@@ -212,7 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     playAgainBtn.addEventListener('click', reloadPage);
-
+//verificar
     //add functionality to the button
     startBtn.addEventListener('click', () => {
       // starts game
@@ -224,7 +228,7 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
         draw()
         timerId = setInterval(moveDown, 1000)
-        nextRandom = Math.floor(Math.random()*theTetrominoes.length)
+        //nextRandom = Math.floor(Math.random()*theTetrominoes.length)
         displayShape()
         startBtn.innerHTML = 'Pause'
       }
@@ -249,14 +253,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
     }
-  
+//verificar  
     //game over
     function gameOver() {
       if(current.some(index => squares[currentPosition + index].classList.contains('taken'))) {
         document.querySelector('.game-over').style.visibility = 'initial'
         clearInterval(timerId)
+        isgameOver = true
         startBtn.style.display = 'none'
         playAgainBtn.style.display = 'block';
+        
+        
       }
     }
   })
