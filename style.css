@@ -1,11 +1,12 @@
 body {
-  background-image: url("./image/background.png");
+  background-color: black;
+  background-image: url("images/tetris.jpg"); ;
 }
 
 h1 {
   font-family: 'Syne Mono', monospace;
   text-align: center;
-  margin-bottom: 100px;
+  padding: 28px;
   color: white;
 }
 
@@ -14,12 +15,17 @@ h3 {
   color: white;
 }
 
+.range-icon {
+  width: 0px;
+  height: auto;
+  margin-right: 0.5rem;
+}
+
+
 .game-over {
-  font-family: 'Syne Mono', monospace;
   color: red;
   visibility: hidden;
   font-size: 1.5rem;
-
 }
 
 .container {
@@ -39,7 +45,7 @@ h3 {
   height: 400px;
   display: flex;
   flex-wrap: wrap;
-  background-color: black;
+  background-color: transparent;
   border: 5px solid white;
 }
 
@@ -62,10 +68,9 @@ h3 {
   height: 80px;
   display: flex;
   flex-wrap: wrap;
-  background-color: black;
+  background-color: transparent;
   margin-bottom: 50px;
   border: 3px solid white;
-
 }
 
 .mini-grid div {
@@ -98,6 +103,7 @@ button {
   color: #ffffff;
   border-color: #ffffff;
   min-width: 85px;
+  font-family: 'Syne Mono', monospace;;
 }
 
 button:hover{
